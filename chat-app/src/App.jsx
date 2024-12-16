@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Routes> {/* Wrap your routes in the Routes component */}
-        <Route path="/login" element={<Login />} /> {/* Route for Login */}
+        <Route path="/" element={<Login />} /> {/* Route for Login */}
         <Route path="/chat" element={<Chat />} /> {/* Route for Chat */}
         <Route path="/profile" element={<ProfileUpdate />} /> {/* Route for ProfileUpdate */}
       </Routes>
