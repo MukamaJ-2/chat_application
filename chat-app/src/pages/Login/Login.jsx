@@ -13,7 +13,7 @@ const Login = () => {
           <h2>{currState}</h2>
           {currState === "Sign up"?<input type="text" placeholder='username' className="form-input" required />: null}
           <input type="email"placeholder='Email address' className="form-input" required />
-          <input type="password" placeholder='password' className="form-input" required />
+          <input type="password" placeholder='enter your password' className="form-input" required />
           <button type='submit'>{currState ==="Sign up"? "Create account":"Login now"}</button>
           <div className="login-term">
             <input type="checkbox" />
