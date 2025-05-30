@@ -1,18 +1,30 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; // Import Routes and Route
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login/Login';
 import Chat from './pages/Chat/Chat';
 import ProfileUpdate from './pages/ProfileUpdate/ProfileUpdate';
-import Login from './pages/login/login';
 
 const App = () => {
+  const isAuthenticated = () => {
+    return localStorage.getItem('token') !== null;
+  };
+
   return (
-    <>
-      <Routes> {/* Wrap your routes in the Routes component */}
-        <Route path="/" element={<Login />} /> {/* Route for Login */}
-        <Route path="/chat" element={<Chat />} /> {/* Route for Chat */}
-        <Route path="/profile" element={<ProfileUpdate />} /> {/* Route for ProfileUpdate */}
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/chat"
+        element={
+          isAuthenticated() ? (
+            <Chat />
+          ) : (
+            <Navigate to="/login" replace />
+          )
+        }
+      />
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/profile" element={<ProfileUpdate />} />
+    </Routes>
   );
 };
 
